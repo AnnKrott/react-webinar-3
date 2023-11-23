@@ -4,15 +4,21 @@ import {createElement} from './utils.js';
 import App from './app.js';
 import Store from './store.js';
 
+// export const randomNumber = () => {
+//   const code = Math.round(Math.random()*100)
+//   console.log(code);
+// }
+
+
 const store = new Store({
   list: [
-    {code: 1, title: 'Название элемента'},
-    {code: 2, title: 'Некий объект'},
-    {code: 3, title: 'Заголовок'},
-    {code: 4, title: 'Очень длинное название элемента из семи слов'},
-    {code: 5, title: 'Запись'},
-    {code: 6, title: 'Шестая запись'},
-    {code: 7, title: 'Седьмая запись'},
+    {code: Math.round(Math.random()*200), title: 'Название элемента', selectCounter: 0},
+    {code: Math.round(Math.random()*200), title: 'Некий объект', selectCounter: 0},
+    {code: Math.round(Math.random()*200), title: 'Заголовок', selectCounter: 0},
+    {code: Math.round(Math.random()*200), title: 'Очень длинное название элемента из семи слов', selectCounter: 0},
+    {code: Math.round(Math.random()*200), title: 'Запись', selectCounter: 0},
+    {code: Math.round(Math.random()*200), title: 'Шестая запись', selectCounter: 0},
+    {code: Math.round(Math.random()*200), title: 'Седьмая запись', selectCounter: 0},
   ]
 });
 

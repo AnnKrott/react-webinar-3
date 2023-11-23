@@ -44,7 +44,14 @@ class Store {
   addItem() {
     this.setState({
       ...this.state,
-      list: [...this.state.list, {code: this.state.list.length + 1, title: 'Новая запись'}]
+      list: 
+        [...this.state.list, 
+          { 
+            code: Math.round(Math.random() * 200 + 200), 
+            title: 'Новая запись', 
+            selectCounter: 0
+          }
+        ]
     })
   };
 
@@ -73,6 +80,11 @@ class Store {
         else {
           item.selected = !item.selected;
         } 
+
+        if (item.code === code && item.selected) {
+          item.selectCounter++;
+        }
+
         return item;
       })
     })
