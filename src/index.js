@@ -1,14 +1,7 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import {createElement} from './utils.js';
 import App from './app.js';
 import Store from './store.js';
-
-// export const randomNumber = () => {
-//   const code = Math.round(Math.random()*100)
-//   console.log(code);
-// }
-
 
 const store = new Store({
   list: [

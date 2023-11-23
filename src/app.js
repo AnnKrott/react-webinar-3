@@ -1,7 +1,5 @@
 import React from 'react';
-import {createElement} from './utils.js';
 import './styles.css';
-import { randomNumber } from './index.js';
 
 /**
  * Приложение
