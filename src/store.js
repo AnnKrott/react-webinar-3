@@ -5,6 +5,7 @@ class Store {
   constructor(initState = {}) {
     this.state = initState;
     this.listeners = []; // Слушатели изменений состояния
+    this.currentCode = this.state.list.length || 0; 
   }
 
   /**
@@ -39,20 +40,35 @@ class Store {
   }
 
   /**
+   * Получить правильную форму слова "раз"
+   * @param number {Number}
+   * @returns boolean
+   */
+  getCorrectPluralForm(number) {
+    if (/12$|13$|14$|0$|1$|5$|6$|7$|8$|9$/.test(number)) {
+      return '';
+    }
+    else {
+      return 'a'
+    }
+  }
+
+  /**
    * Добавление новой записи
    */
   addItem() {
     this.setState({
       ...this.state,
       list: 
-        [...this.state.list, 
-          { 
-            code: Math.round(Math.random() * 200 + 200), 
-            title: 'Новая запись', 
-            selectCounter: 0
-          }
-        ]
+      [...this.state.list, 
+        { 
+          code: this.currentCode + 1, 
+          title: 'Новая запись', 
+          selectCounter: 0
+        }
+      ],
     })
+    this.currentCode++;
   };
 
   /**

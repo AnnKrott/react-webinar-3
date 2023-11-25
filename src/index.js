@@ -5,13 +5,13 @@ import Store from './store.js';
 
 const store = new Store({
   list: [
-    {code: Math.round(Math.random()*200), title: 'Название элемента', selectCounter: 0},
-    {code: Math.round(Math.random()*200), title: 'Некий объект', selectCounter: 0},
-    {code: Math.round(Math.random()*200), title: 'Заголовок', selectCounter: 0},
-    {code: Math.round(Math.random()*200), title: 'Очень длинное название элемента из семи слов', selectCounter: 0},
-    {code: Math.round(Math.random()*200), title: 'Запись', selectCounter: 0},
-    {code: Math.round(Math.random()*200), title: 'Шестая запись', selectCounter: 0},
-    {code: Math.round(Math.random()*200), title: 'Седьмая запись', selectCounter: 0},
+    {code: 1, title: 'Название элемента', selectCounter: 0},
+    {code: 2, title: 'Некий объект', selectCounter: 0},
+    {code: 3, title: 'Заголовок', selectCounter: 0},
+    {code: 4, title: 'Очень длинное название элемента из семи слов', selectCounter: 0},
+    {code: 5, title: 'Запись', selectCounter: 0},
+    {code: 6, title: 'Шестая запись', selectCounter: 0},
+    {code: 7, title: 'Седьмая запись', selectCounter: 0},
   ]
 });
 
