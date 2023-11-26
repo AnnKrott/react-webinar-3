@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.css';
+import { getCorrectPluralForm } from './utils';
 
 /**
  * Приложение
@@ -29,7 +30,7 @@ function App({store}) {
                 <div className='Item-title'>
                   {item.title}
                   {(item.selectCounter)
-                    ? ` | Выделяли ${item.selectCounter} раз${store.getCorrectPluralForm(item.selectCounter)}`
+                    ? ` | Выделяли ${getCorrectPluralForm(item.selectCounter)}`
                     : ''
                   }
                 </div>

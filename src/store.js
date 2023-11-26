@@ -40,20 +40,6 @@ class Store {
   }
 
   /**
-   * Получить правильную форму слова "раз"
-   * @param number {Number}
-   * @returns boolean
-   */
-  getCorrectPluralForm(number) {
-    if (/12$|13$|14$|0$|1$|5$|6$|7$|8$|9$/.test(number)) {
-      return '';
-    }
-    else {
-      return 'a'
-    }
-  }
-
-  /**
    * Добавление новой записи
    */
   addItem() {

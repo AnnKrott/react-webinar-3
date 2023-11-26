@@ -26,3 +26,20 @@ export function createElement(name, props = {}, ...children) {
 
   return element;
 }
+
+/**
+ * Получить правильную форму слова "раз"
+ * @param number {Number}
+ * @returns string
+ */
+export function getCorrectPluralForm(number) {
+  const pluralRules = new Intl.PluralRules('ru')
+  const rule = pluralRules.select(number)
+  const suffixes = new Map([
+    ['one', 'раз'],
+    ['few', 'раза'],
+    ['many', 'раз']
+  ])
+  const suffix = suffixes.get(rule)
+  return `${number} ${suffix}`
+}
