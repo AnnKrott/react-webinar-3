@@ -1,4 +1,4 @@
-import {generateCode} from "./utils";
+import {generateCode, generateCode1} from "./utils";
 
 /**
  * Хранилище состояния приложения
@@ -43,22 +43,27 @@ class Store {
   /**
    * Добавление новой записи
    */
-  addItem() {
-    this.setState({
-      ...this.state,
-      list: [...this.state.list, {code: generateCode(), title: 'Новая запись'}]
-    })
+  addToCart(code) {
+  this.state.list.map((item) => {
+  if (item.code === code) {
+   this.setState({
+    ...this.state,
+    cartList: [...this.state.cartList, {code: generateCode1(), title: item.title, price: item.price, count: 1}]
+   })
+   console.log(this.state.cartList);
+  }
+})
   };
 
   /**
    * Удаление записи по коду
    * @param code
    */
-  deleteItem(code) {
+  deleteFromCart(code) {
     this.setState({
       ...this.state,
       // Новый список, в котором не будет удаляемой записи
-      list: this.state.list.filter(item => item.code !== code)
+      cartList: this.state.cartList.filter(item => item.code !== code)
     })
   };
 

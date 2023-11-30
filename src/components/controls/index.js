@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from 'prop-types';
 import './style.css';
 
-function Controls({onAdd}) {
+function Controls({onModalBtnClick, btnText}) {
   return (
-    <div className='Controls'>
-      <button onClick={() => onAdd()}>Добавить</button>
-    </div>
+    <span className='Controls'>
+      <button onClick={() => onModalBtnClick(prev => !prev)}>{btnText}</button>
+    </span>
   )
 }
 
