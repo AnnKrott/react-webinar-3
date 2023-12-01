@@ -11,11 +11,12 @@ function Controls({onModalBtnClick, btnText}) {
 }
 
 Controls.propTypes = {
-  onAdd: PropTypes.func
+  onModalBtnClick: PropTypes.func,
+  btnText: PropTypes.string
 };
 
 Controls.defaultProps = {
-  onAdd: () => {}
+  onModalBtnClick: () => {}
 }
 
 export default React.memo(Controls);

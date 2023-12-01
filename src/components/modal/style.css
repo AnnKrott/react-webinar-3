@@ -21,10 +21,19 @@
 .Modal-content {
   width: 90vw;
   border-radius: 5px;
+  background-color: #fff;
 }
 
 .Modal-opened {
   opacity: 1;
   pointer-events: auto;
   z-index: 10;
+}
+
+.Modal-strong {
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+  padding: 20px 80px;
+  font-weight: bold;
 }

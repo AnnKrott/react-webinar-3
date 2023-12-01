@@ -19,11 +19,12 @@ List.propTypes = {
   list: PropTypes.arrayOf(PropTypes.shape({
     code: PropTypes.number
   })).isRequired,
-  onDeleteItem: PropTypes.func
+  onClick: PropTypes.func,
+  itemText: PropTypes.string
 };
 
 List.defaultProps = {
-  onDeleteItem: () => {
+  onClick: () => {
   },
 }
 

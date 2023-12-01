@@ -1,8 +1,7 @@
-import { cn as bem } from '@bem-react/classname';
 import './style.css'
 import React from 'react';
-
-function Modal({ children, setIsOpened, isOpened }) {
+import PropTypes from "prop-types";
+function Modal({ children, isOpened }) {
 
   const onContentClick = (e) => {
     e.stopPropagation()
@@ -18,6 +17,11 @@ function Modal({ children, setIsOpened, isOpened }) {
     </div>
   )
 };
+
+Modal.propTypes = {
+  children: PropTypes.node,
+  isOpened: PropTypes.bool
+}
 
 export default React.memo(Modal)
 

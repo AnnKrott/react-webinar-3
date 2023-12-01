@@ -14,8 +14,11 @@ function Item(props) {
       <div className="Item-price">
         {props.item.price}&nbsp;&#8381;
       </div>
+      <div className={props.item.count && "Item-count"}>
+        {props.item.count && `${props.item.count}\u00A0шт.`}
+      </div>
       <div className='Item-actions'>
-        <button onClick={() => props.onClick(props.item.code)}>
+        <button onClick={() => props.onClick(props.item)}>
           {props.itemText}
         </button>
       </div>
@@ -26,13 +29,15 @@ function Item(props) {
 Item.propTypes = {
   item: PropTypes.shape({
     code: PropTypes.number,
-    title: PropTypes.string
+    title: PropTypes.string,
+    price: PropTypes.number,
+    number: PropTypes.number
   }).isRequired,
   onDelete: PropTypes.func,
 };
 
 Item.defaultProps = {
-  onDelete: () => {
+  onClick: () => {
   },
 }
 

@@ -6,7 +6,8 @@ import {generateCode, generateCode1} from "./utils";
 class Store {
   constructor(initState = {}) {
     this.state = initState;
-    this.listeners = []; // Слушатели изменений состояния
+    this.listeners = [];
+    this.uniqueItems = 0; // Слушатели изменений состояния
   }
 
   /**
@@ -41,29 +42,70 @@ class Store {
   }
 
   /**
-   * Добавление новой записи
-   */
-  addToCart(code) {
-  this.state.list.map((item) => {
-  if (item.code === code) {
-   this.setState({
-    ...this.state,
-    cartList: [...this.state.cartList, {code: generateCode1(), title: item.title, price: item.price, count: 1}]
-   })
-   console.log(this.state.cartList);
+ * Установка состояния
+ * @param itemClicked {Object}
+ */
+  updateCartState(itemClicked) {
+    this.uniqueItems = this.uniqueItems + 1;
+    this.state.list.map((item) => {
+      if (item.code === itemClicked.code) {
+        this.setState({
+          ...this.state,
+          cartList: [
+            ...this.state.cartList,
+            { code: generateCode1(), title: item.title, price: item.price, count: 1 }
+          ]
+        })
+      }
+    })
   }
-})
+
+  /**
+   * Добавление нового товара в корзину
+   * @param itemClicked {Object}
+   *    */
+  addToCart(itemClicked) {
+    if (!this.state.cartList.length) {
+      this.updateCartState(itemClicked)
+    } else {
+
+      const itemExist = this.state.cartList.find(cartItem => cartItem.title === itemClicked.title)
+      if (itemExist) {
+        this.setState({
+          ...this.state,
+          cartList: this.state.cartList.map(cartItem => {
+
+            if (cartItem.title === itemClicked.title) {
+              return {...cartItem, count: cartItem.count + 1}
+            } else {
+              return {...cartItem}
+            }
+
+          })
+        })
+      } else {
+        this.updateCartState(itemClicked)
+      }
+    }
   };
 
   /**
-   * Удаление записи по коду
-   * @param code
+ * Получение общей суммы товаров в корзине
+ */
+  getTotalPrice() {
+    return this.state.cartList.reduce((sum, item) => sum + (item.price * item.count), 0)
+  }
+
+  /**
+   * Удаление товара из корзины
+   * @param itemClicked {Object}
    */
-  deleteFromCart(code) {
+  deleteFromCart(itemClicked) {
+    this.uniqueItems = this.uniqueItems - 1;
     this.setState({
       ...this.state,
       // Новый список, в котором не будет удаляемой записи
-      cartList: this.state.cartList.filter(item => item.code !== code)
+      cartList: this.state.cartList.filter(item => item.title !== itemClicked.title)
     })
   };
 
