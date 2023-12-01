@@ -1,4 +1,4 @@
-import {generateCode, generateCode1} from "./utils";
+import {formatNumber, generateCode, generateCode1} from "./utils";
 
 /**
  * Хранилище состояния приложения
@@ -93,7 +93,7 @@ class Store {
  * Получение общей суммы товаров в корзине
  */
   getTotalPrice() {
-    return this.state.cartList.reduce((sum, item) => sum + (item.price * item.count), 0)
+    return formatNumber(this.state.cartList.reduce((sum, item) => sum + (item.price * item.count), 0))
   }
 
   /**

@@ -45,7 +45,7 @@ function App({store}) {
               many: 'товаров'
             })}
             / 
-            ${store.getTotalPrice()}\u00A0₽
+            ${store.getTotalPrice()}
            `
           : 'Пусто'
         }
@@ -68,7 +68,7 @@ function App({store}) {
         />
         <div className="Modal-strong">
           <span>Итого:</span> 
-          {`${store.getTotalPrice()}\u00A0₽`}
+          {store.getTotalPrice()}
         </div>
       </Modal>
 

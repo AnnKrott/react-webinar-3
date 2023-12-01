@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
-import {plural} from "../../utils";
+import {formatNumber, plural} from "../../utils";
 import './style.css';
 
 function Item(props) {
@@ -12,7 +12,7 @@ function Item(props) {
         {props.item.title}
       </div>
       <div className="Item-price">
-        {props.item.price}&nbsp;&#8381;
+        {formatNumber(props.item.price)}
       </div>
       <div className={props.item.count && "Item-count"}>
         {props.item.count && `${props.item.count}\u00A0шт.`}
