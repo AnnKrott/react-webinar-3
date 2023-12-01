@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import {formatNumber, plural} from "../../utils";
+import {formatNumber} from "../../utils";
 import './style.css';
 
 function Item(props) {
