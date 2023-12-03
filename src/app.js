@@ -4,8 +4,8 @@ import Controls from "./components/controls";
 import Head from "./components/head";
 import PageLayout from "./components/page-layout";
 import Navigation from './components/navigation';
-import Modal from './components/modal';
 import { plural } from './utils';
+import Cart from './components/cart';
 
 /**
  * Приложение
@@ -57,20 +57,14 @@ function App({store}) {
         itemText='Добавить'
       />
 
-      <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
-        <Head title='Корзина'>
-          <Controls onModalBtnClick={callbacks.toggleModal} btnText='Закрыть'/>
-        </Head>
-        <List
-          list={cartList}
-          onClick={callbacks.onDeleteFromCart}
-          itemText='Удалить'
-        />
-        <div className="Modal-strong">
-          <span>Итого:</span> 
-          {store.getTotalPrice()}
-        </div>
-      </Modal>
+      <Cart
+        isOpened={isOpened}
+        setIsOpened={setIsOpened}
+        onModalBtnClick={callbacks.toggleModal}
+        list={cartList}
+        onClick={callbacks.onDeleteFromCart}
+        totalPrice={store.getTotalPrice()}
+      />
 
     </PageLayout>
   );

@@ -53,7 +53,7 @@ class Store {
           ...this.state,
           cartList: [
             ...this.state.cartList,
-            { code: generateCode1(), title: item.title, price: item.price, count: 1 }
+            { code: item.code, title: item.title, price: item.price, count: 1 }
           ]
         })
       }
@@ -69,13 +69,13 @@ class Store {
       this.updateCartState(itemClicked)
     } else {
 
-      const itemExist = this.state.cartList.find(cartItem => cartItem.title === itemClicked.title)
+      const itemExist = this.state.cartList.find(cartItem => cartItem.code === itemClicked.code)
       if (itemExist) {
         this.setState({
           ...this.state,
           cartList: this.state.cartList.map(cartItem => {
 
-            if (cartItem.title === itemClicked.title) {
+            if (cartItem.code === itemClicked.code) {
               return {...cartItem, count: cartItem.count + 1}
             } else {
               return {...cartItem}
@@ -105,7 +105,7 @@ class Store {
     this.setState({
       ...this.state,
       // Новый список, в котором не будет удаляемой записи
-      cartList: this.state.cartList.filter(item => item.title !== itemClicked.title)
+      cartList: this.state.cartList.filter(item => item.code !== itemClicked.code)
     })
   };
 

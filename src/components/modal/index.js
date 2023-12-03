@@ -3,6 +3,8 @@ import React from 'react';
 import PropTypes from "prop-types";
 function Modal({ children, isOpened }) {
 
+  console.log('modal is rendered');
+
   const onContentClick = (e) => {
     e.stopPropagation()
   }
