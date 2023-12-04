@@ -17,7 +17,11 @@ export function plural(value, variants = {}, locale = 'ru-RU') {
 }
 
 export function formatNumber(number) {
-  return new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB" }).format(number)
+  return new Intl.NumberFormat("ru-RU", { 
+    style: "currency", 
+    currency: "RUB", 
+    maximumFractionDigits: 0 
+  }).format(number)
 }
 
 /**

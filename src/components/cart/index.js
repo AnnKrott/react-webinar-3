@@ -8,7 +8,7 @@ import './style.css'
 
 function Cart(props) {
   return (
-    <Modal isOpened={props.isOpened} setIsOpened={props.setIsOpened}>
+    <>
       <Head title='Корзина'>
         <Controls onModalBtnClick={props.onModalBtnClick} btnText='Закрыть' />
       </Head>
@@ -21,7 +21,7 @@ function Cart(props) {
         <span>Итого:</span>
         {props.totalPrice}
       </div>
-    </Modal>
+    </>
   )
 }
 

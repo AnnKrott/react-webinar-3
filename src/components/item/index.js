@@ -18,7 +18,7 @@ function Item(props) {
         {props.item.count && `${props.item.count}\u00A0шт.`}
       </div>
       <div className='Item-actions'>
-        <button onClick={() => props.onClick(props.item)}>
+        <button onClick={() => props.onClick(props.item.code)}>
           {props.itemText}
         </button>
       </div>

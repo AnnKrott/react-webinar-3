@@ -10,7 +10,7 @@ function Navigation({onModalBtnClick, navText}) {
   return (
     <div className={cn()}>
     <span className={cn('text')}>
-        В корзине: <strong className={cn('strong')}>{navText}</strong>
+        В корзине: <strong>{navText}</strong>
     </span>
     <Controls onModalBtnClick={onModalBtnClick} btnText='Перейти'/>
     </div>

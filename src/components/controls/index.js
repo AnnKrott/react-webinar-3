@@ -5,7 +5,12 @@ import './style.css';
 function Controls({onModalBtnClick, btnText}) {
   return (
     <span className='Controls'>
-      <button onClick={() => onModalBtnClick(prev => !prev)}>{btnText}</button>
+      <button 
+        onClick={() => onModalBtnClick(prev => !prev)}
+        className='Controls-btn'
+      >
+        {btnText}
+      </button>
     </span>
   )
 }

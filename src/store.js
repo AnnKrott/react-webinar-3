@@ -43,12 +43,12 @@ class Store {
 
   /**
  * Установка состояния
- * @param itemClicked {Object}
+ * @param code {Object}
  */
-  updateCartState(itemClicked) {
+  updateCartState(code) {
     this.uniqueItems = this.uniqueItems + 1;
     this.state.list.map((item) => {
-      if (item.code === itemClicked.code) {
+      if (item.code === code) {
         this.setState({
           ...this.state,
           cartList: [
@@ -62,20 +62,20 @@ class Store {
 
   /**
    * Добавление нового товара в корзину
-   * @param itemClicked {Object}
-   *    */
-  addToCart(itemClicked) {
+   * @param code {Number}
+  */
+  addToCart(code) {
     if (!this.state.cartList.length) {
-      this.updateCartState(itemClicked)
+      this.updateCartState(code)
     } else {
 
-      const itemExist = this.state.cartList.find(cartItem => cartItem.code === itemClicked.code)
+      const itemExist = this.state.cartList.find(cartItem => cartItem.code === code)
       if (itemExist) {
         this.setState({
           ...this.state,
           cartList: this.state.cartList.map(cartItem => {
 
-            if (cartItem.code === itemClicked.code) {
+            if (cartItem.code === code) {
               return {...cartItem, count: cartItem.count + 1}
             } else {
               return {...cartItem}
@@ -84,7 +84,7 @@ class Store {
           })
         })
       } else {
-        this.updateCartState(itemClicked)
+        this.updateCartState(code)
       }
     }
   };
@@ -98,14 +98,14 @@ class Store {
 
   /**
    * Удаление товара из корзины
-   * @param itemClicked {Object}
+   * @param code {Number}
    */
-  deleteFromCart(itemClicked) {
+  deleteFromCart(code) {
     this.uniqueItems = this.uniqueItems - 1;
     this.setState({
       ...this.state,
       // Новый список, в котором не будет удаляемой записи
-      cartList: this.state.cartList.filter(item => item.code !== itemClicked.code)
+      cartList: this.state.cartList.filter(item => item.code !== code)
     })
   };
 

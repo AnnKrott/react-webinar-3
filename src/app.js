@@ -6,6 +6,7 @@ import PageLayout from "./components/page-layout";
 import Navigation from './components/navigation';
 import { plural } from './utils';
 import Cart from './components/cart';
+import Modal from './components/modal';
 
 /**
  * Приложение
@@ -56,16 +57,14 @@ function App({store}) {
         onClick={callbacks.onAddToCart}
         itemText='Добавить'
       />
-
-      <Cart
-        isOpened={isOpened}
-        setIsOpened={setIsOpened}
-        onModalBtnClick={callbacks.toggleModal}
-        list={cartList}
-        onClick={callbacks.onDeleteFromCart}
-        totalPrice={store.getTotalPrice()}
-      />
-
+      <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
+        <Cart
+          onModalBtnClick={callbacks.toggleModal}
+          list={cartList}
+          onClick={callbacks.onDeleteFromCart}
+          totalPrice={store.getTotalPrice()}
+        />
+      </Modal>
     </PageLayout>
   );
 }
