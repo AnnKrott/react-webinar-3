@@ -1,0 +1,21 @@
+.Page-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  text-align: center;
+}
+
+.Page {
+  width: 18px;
+  height: 18px;
+  margin-right: 3px;
+  padding: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.Page-current {
+  background-color: rgb(0, 157, 235);
+  color: rgb(255, 255, 255);
+}

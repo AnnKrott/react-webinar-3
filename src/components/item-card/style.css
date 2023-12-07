@@ -1,0 +1,11 @@
+.ItemCard {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 16px;
+}
+
+.ItemCard-price {
+  font-size: 18px;
+}
