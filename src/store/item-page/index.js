@@ -25,15 +25,15 @@ class ItemPage extends StoreModule {
       this.setState({
         ...this.getState(),
           list: {
-          id: item._id,
-          title: item.title,
-          description: item.description,
-          country: item.madeIn.title,
-          countryCode: item.madeIn.code,
-          category: item.category.title,
-          edition: item.edition,
-          price: item.price
-        }
+            id: item._id,
+            title: item.title,
+            description: item.description,
+            country: item.madeIn.title,
+            countryCode: item.madeIn.code,
+            category: item.category.title,
+            edition: item.edition,
+            price: item.price
+          }
       }, 'Получены данные товара')
     })
   }

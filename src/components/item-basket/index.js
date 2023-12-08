@@ -1,22 +1,30 @@
-import {memo, useCallback} from 'react';
+import {memo} from 'react';
 import propTypes from 'prop-types';
 import {numberFormat} from "../../utils";
 import {cn as bem} from "@bem-react/classname";
 import PropTypes from "prop-types";
 import './style.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 function ItemBasket(props) {
 
   const cn = bem('ItemBasket');
 
   const callbacks = {
-    onRemove: (e) => props.onRemove(props.item._id)
+    onRemove: () => props.onRemove(props.item._id)
   };
 
   return (
     <div className={cn()}>
-      <Link className={cn('title')} to={`/${props.item._id}`}>{props.item.title}</Link>
+
+      <Link 
+        className={cn('title')} 
+        to={`/item/${props.item._id}`}
+        onClick={props.onRedirect}
+      >
+        {props.item.title}
+      </Link>
+
       <div className={cn('right')}>
         <div className={cn('cell')}>{numberFormat(props.item.price)} ₽</div>
         <div className={cn('cell')}>{numberFormat(props.item.amount || 0)} шт</div>

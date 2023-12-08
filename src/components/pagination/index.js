@@ -1,41 +1,20 @@
-import React, { useCallback, useEffect, useMemo } from "react";
-import { usePagination } from "../../store/use-pagination";
+import React, { memo } from "react";
+import { countPages, getPages } from "../../store/use-pagination";
+import PropTypes from "prop-types";
 import './style.css'
 
-const Pagination = ({ totalPages, page, changePage }) => {
-  let pagesArray = usePagination(totalPages);
+const Pagination = ({ totalPages, page, loadPages }) => {
 
-  const res = useMemo(() => {
-    let res = []
-    console.log('render of paagination');
-
-    if (page === 1) {
-      res = [1, 2, 3, totalPages]
-    } else if (page === totalPages) {
-      res = [1, totalPages - 2, totalPages - 1, totalPages]
-    } else {
-      res = pagesArray.filter(p =>
-        p === 1 || p === page || p === page + 1 || p === page - 1 || p === totalPages
-      )
-    }
-
-    res.forEach((number, i, arr) => {
-      if (arr[i + 1] - number >= 2) {
-        arr.splice(i + 1, 0, '...')
-      }
-    })
-
-    return res
-  }, [page, totalPages])
+  let pagesArray = countPages(totalPages);
+  let res = getPages(page, totalPages, pagesArray)
    
   return (
     <div className='Page-wrapper'>
       {res.map((p, i) =>
-        <div className={(typeof p === 'string') ? 'Page-disabled' : ''}>
+        <div key={i} className={(typeof p === 'string') ? 'Page-disabled' : ''}>
           <span
-            key={i}
             className={p === page ? 'Page Page-current' : 'Page'}
-            onClick={() => changePage(p)}
+            onClick={() => loadPages(p)}
           >
             {p}
           </span>
@@ -45,4 +24,16 @@ const Pagination = ({ totalPages, page, changePage }) => {
   )
 };
 
-export default Pagination;
+Pagination.propTypes = {
+  totalPages: PropTypes.number,
+  page: PropTypes.number,
+  loadPages: PropTypes.func
+};
+
+Pagination.defaultProps = {
+  loadPages: () => {},
+  totalPages: 1,
+  page: 1
+}
+
+export default memo(Pagination);
