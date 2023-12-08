@@ -9,3 +9,7 @@
 .ItemCard-price {
   font-size: 18px;
 }
+
+.ItemCard-btn {
+  margin-left: 20px;
+}

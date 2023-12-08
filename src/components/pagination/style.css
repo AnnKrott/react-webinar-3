@@ -9,13 +9,24 @@
   width: 18px;
   height: 18px;
   margin-right: 3px;
-  padding: 3px;
+  padding: 3px 6px;
   cursor: pointer;
   font-size: 16px;
-  line-height: 1.2;
+}
+
+.Page:hover {
+  background-color: #E1E1E1;
 }
 
 .Page-current {
-  background-color: rgb(0, 157, 235);
-  color: rgb(255, 255, 255);
+  background-color: #0087E9;
+  color: #fff;
+}
+
+.Page-current:hover {
+  background-color: #0087E9;
+}
+
+.Page-disabled {
+  pointer-events: none;
 }

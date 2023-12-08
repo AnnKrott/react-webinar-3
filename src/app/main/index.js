@@ -41,8 +41,12 @@ function Main() {
   return (
     <PageLayout>
       <Head title='Магазин'/>
-      <Nav onOpen={callbacks.openModalBasket} amount={select.amount}
-                  sum={select.sum}/>
+      
+      <Nav 
+        onOpen={callbacks.openModalBasket} 
+        amount={select.amount}
+        sum={select.sum}
+      />
       <List list={select.catalogData.list} renderItem={renders.item}/>
 
       <Pagination 

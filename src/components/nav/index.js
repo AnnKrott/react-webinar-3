@@ -10,7 +10,7 @@ function Nav({sum, amount, onOpen}) {
   return (
     <div className={cn()}>
 
-      <Link to='/'>Главная</Link>
+      <Link className={cn('link')} to='/'>Главная</Link>
 
       <div className={cn('basket')}>
         <span className={cn('label')}>В корзине:</span>
