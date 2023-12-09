@@ -2,7 +2,7 @@ import {memo, useCallback, useEffect, useState} from 'react';
 import Item from "../../components/item";
 import PageLayout from "../../components/page-layout";
 import Head from "../../components/head";
-import Nav from "../../components/nav";
+import BasketTool from "../../components/basket-tool";
 import List from "../../components/list";
 import useStore from "../../store/use-store";
 import useSelector from "../../store/use-selector";
@@ -36,14 +36,14 @@ function Main() {
 
   const renders = {
     item: useCallback((item) => {
-      return <Item item={item} onAdd={callbacks.addToBasket}/>
+      return <Item item={item} onAdd={callbacks.addToBasket} path={`/item/${item._id}`}/>
     }, [callbacks.addToBasket]),
   };
 
   return (
         <PageLayout>
           <Head title = 'Магазин' />
-          <Nav 
+          <BasketTool 
             onOpen={callbacks.openModalBasket} 
             amount={select.amount}
             sum={select.sum}

@@ -1,7 +1,7 @@
 import { memo, useCallback, useEffect, useState } from "react";
 import PageLayout from "../../components/page-layout";
 import Head from "../../components/head";
-import Nav from "../../components/nav";
+import BasketTool from "../../components/basket-tool";
 import useStore from "../../store/use-store";
 import useSelector from "../../store/use-selector";
 import { useParams } from "react-router";
@@ -41,7 +41,7 @@ function ItemPage() {
         :
         <>
           <Head title={item.list.title} />
-          <Nav sum={item.sum} amount={item.amount} onOpen={callbacks.openModalBasket} />
+          <BasketTool sum={item.sum} amount={item.amount} onOpen={callbacks.openModalBasket} />
           <ItemCard itemData={item.list} addToBasket={callbacks.addToBasket} />
         </>
       }

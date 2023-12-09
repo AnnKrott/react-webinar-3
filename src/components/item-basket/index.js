@@ -4,7 +4,7 @@ import {numberFormat} from "../../utils";
 import {cn as bem} from "@bem-react/classname";
 import PropTypes from "prop-types";
 import './style.css';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function ItemBasket(props) {
 
@@ -19,7 +19,7 @@ function ItemBasket(props) {
 
       <Link 
         className={cn('title')} 
-        to={`/item/${props.item._id}`}
+        to={props.path}
         onClick={props.onRedirect}
       >
         {props.item.title}
