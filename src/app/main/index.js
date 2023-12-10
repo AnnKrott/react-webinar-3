@@ -14,9 +14,13 @@ function Main() {
   const store = useStore();
   const [isLoading, setIsLoading] = useState(true)
 
+  const loadPages = async() => {
+    await store.actions.catalog.loadPages();
+    setIsLoading(false)
+  }
+
   useEffect(() => {
-    store.actions.catalog.loadPages();
-    setIsLoading(false);
+    loadPages()
   }, []);
 
   const select = useSelector(state => ({

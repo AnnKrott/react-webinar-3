@@ -20,11 +20,16 @@ function ItemPage() {
     sum: state.basket.sum,
   }));
 
-  useEffect(() => {
-    store.actions.itemPage.getItemById(params.id)
+  
+  const loadItemCard = async() => {
     const page = Number(localStorage.getItem('page'))
-    store.actions.catalog.loadPages(page)
+    await store.actions.itemPage.getItemById(params.id)
+    await store.actions.catalog.loadPages(page)
     setIsLoading(false)
+  }
+
+  useEffect(() => {
+    loadItemCard()
   }, [params.id])
 
   const callbacks = {
