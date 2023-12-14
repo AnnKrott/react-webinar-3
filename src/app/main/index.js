@@ -12,6 +12,7 @@ import LocaleSelect from "../../containers/locale-select";
 /**
  * Главная страница - первичная загрузка каталога
  */
+
 function Main() {
 
   const store = useStore();
